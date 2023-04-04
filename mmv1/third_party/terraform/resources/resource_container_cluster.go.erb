@@ -78,7 +78,7 @@ var (
 	<% unless version == 'ga' -%>
 		"addons_config.0.istio_config",
 		"addons_config.0.kalm_config",
-		
+
 	<% end -%>
 	}
 
@@ -1031,7 +1031,7 @@ func ResourceContainerCluster() *schema.Resource {
 				Optional:    true,
 				Computed:    true,
 				MaxItems: 	 1,
-				Description: `The notification config for sending cluster upgrade notifications`,
+				Description: `Enable/Disable Protect API features for the cluster.`,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"workload_config": {
@@ -3973,7 +3973,7 @@ func expandClusterAddonsConfig(configured interface{}) *container.AddonsConfig {
 }
 
 func expandIPAllocationPolicy(configured interface{}, networkingMode string) (*container.IPAllocationPolicy, error) {
-		
+
 	l := configured.([]interface{})
 	if len(l) == 0 || l[0] == nil {
 		if networkingMode == "VPC_NATIVE" {
